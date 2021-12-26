@@ -1,0 +1,13 @@
+version: "3"
+services:
+  oracle-batch:
+    image: jaspeen/oracle-xe-11g
+    container_name: batch-db
+    ports:
+      - "1524:1521"
+  oracle-business:
+    image: jaspeen/oracle-xe-11g
+    container_name: business-db
+    ports:
+      - "1525:1521"
+
