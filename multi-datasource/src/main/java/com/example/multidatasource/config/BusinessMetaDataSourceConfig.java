@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 public class BusinessMetaDataSourceConfig {
 
     @Bean(name = "businessDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.business")
+    @ConfigurationProperties(prefix = "spring.datasource.hikari.business")
     public DataSource businessDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }

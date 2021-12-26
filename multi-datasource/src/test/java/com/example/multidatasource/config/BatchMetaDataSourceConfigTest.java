@@ -13,7 +13,10 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(classes = {
+        BatchMetaDataSourceConfig.class,
+        BusinessMetaDataSourceConfig.class
+})
 class BatchMetaDataSourceConfigTest {
 
     @Autowired

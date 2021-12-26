@@ -16,7 +16,7 @@ public class BatchMetaDataSourceConfig {
 
     @Primary
     @Bean(name = "basicDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.basic")
+    @ConfigurationProperties(prefix = "spring.datasource.hikari.basic")
     public DataSource dataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
