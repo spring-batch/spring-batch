@@ -21,39 +21,39 @@ public class DBJobConfiguration {
 
     @Bean
     public Job dbJob() {
-        return this.jobBuilderFactory.get("Job")
-                .start(step1())
-                .next(step2())
-                .next(step3())
+        return this.jobBuilderFactory.get("dbJob")
+                .start(dbStep1())
+                .next(dbStep2())
+                .next(dbStep3())
                 .build();
     }
 
     @Bean
-    public Step step1() {
-        return stepBuilderFactory.get("step1")
+    public Step dbStep1() {
+        return stepBuilderFactory.get("dbStep1")
                 .tasklet(new Tasklet() {
                     @Override
                     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-                        System.out.println("step1 has executed");
+                        System.out.println("dbStep1 has executed");
                         return RepeatStatus.FINISHED;
                     }
                 })
                 .build();
     }
     @Bean
-    public Step step2() {
-        return stepBuilderFactory.get("step2")
+    public Step dbStep2() {
+        return stepBuilderFactory.get("dbStep2")
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step2 has executed");
+                    System.out.println("dbStep2 has executed");
                     return RepeatStatus.FINISHED;
                 })
                 .build();
     }
     @Bean
-    public Step step3() {
-        return stepBuilderFactory.get("step3")
+    public Step dbStep3() {
+        return stepBuilderFactory.get("dbStep3")
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step3 has executed");
+                    System.out.println("dbStep3 has executed");
                     return RepeatStatus.FINISHED;
                 })
                 .build();
