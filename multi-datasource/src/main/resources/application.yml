@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: multi-datasource-service
+
+  datasource:
+    hikari:
+      business:
+        driver-class-name: oracle.jdbc.OracleDriver
+        jdbcUrl: jdbc:oracle:thin:@localhost:1525:XE
+        username: seok
+        password: 1234
+      basic:
+        driver-class-name: oracle.jdbc.OracleDriver
+        jdbcUrl: jdbc:oracle:thin:@localhost:1524:XE
+        username: seok
+        password: 1234
+
