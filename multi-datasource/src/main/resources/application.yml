@@ -1,17 +1,55 @@
 spring:
+  profiles:
+    active: local
+
+---
+spring:
+  profiles:
+    group:
+      "local": "common,meta,business"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
   application:
     name: multi-datasource-service
 
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: never
+  jpa:
+    open-in-view: false
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: meta
+  datasource:
+    hikari:
+      batch:
+        driver-class-name: oracle.jdbc.OracleDriver
+        jdbcUrl: jdbc:oracle:thin:@localhost:1524:XE
+        username: seok
+        password: 1234
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: business
   datasource:
     hikari:
       business:
         driver-class-name: oracle.jdbc.OracleDriver
         jdbcUrl: jdbc:oracle:thin:@localhost:1525:XE
-        username: seok
-        password: 1234
-      basic:
-        driver-class-name: oracle.jdbc.OracleDriver
-        jdbcUrl: jdbc:oracle:thin:@localhost:1524:XE
         username: seok
         password: 1234
 
